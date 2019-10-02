@@ -12,9 +12,10 @@ before_install:
   - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project inspiring-bee-248905
-  - gcloud config set compute/zone us-central1-a
+  #- gcloud config set compute/zone us-central1-a
   - gcloud config set container/use_client_certificate True
-  - gcloud container clusters get-credentials multi-cluster 
+  #- gcloud container clusters get-credentials multi-cluster 
+  - gcloud container clusters get-credentials --zone us-central1-a  multi-cluster
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t shanmicheal25/react-test -f ./client/Dockerfile.dev ./client
 
